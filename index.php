@@ -1,70 +1,51 @@
 <?php
-    $users = [
-        ["name"=>"user_1", "age"=>20],
-        ["name"=>"user_2", "age"=>20],
-        ["name"=>"user_3", "age"=>20],
-        ["name"=>"user_4", "age"=>20],
-        ["name"=>"user_5", "age"=>20],
-        ["name"=>"user_6", "age"=>20],
-        ["name"=>"user_7", "age"=>20],
-        ["name"=>"user_8", "age"=>20],
-        ["name"=>"user_9", "age"=>20],
-    ]
+
+    function title($title)
+    {
+        echo "<title>$title | Bestmag.com</title>";
+    }
+
+    function _header(){
+        return "
+            <header>
+                <h1>Hello world</h1>
+            </header>
+        ";
+    }
+
+    function echo_array($array){
+        echo "THIS IS YOUR ARRAY: ";
+        echo "<ul>";
+        foreach ($array as $value) {
+
+            if(odd($value) == false)
+                echo "<li>_$value</li>";
+            else
+                echo "<li>$value</li>";
+                
+        }
+        echo "</ul>";
+    }
+
+    function odd($number){
+        if($number % 2 == 0)
+            return true;
+        else
+            return false;
+    }
+
 ?>
-
 <html>
-<head>
-    <title>Section 3</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-    <table>
-        <caption>Statement Summary</caption>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-            $count = count($users);
-            $limit = 3;
-            $page = 1;
-            if(isset($_GET['page']))
-                $page = $_GET['page'];
-
-            $offset = ($page-1) * $limit;
-
-            $reminder = $offset + $limit;
-
-            if($count >= $reminder){
-                for ($i=$offset; $i <= $reminder-1; $i++) { 
-                    $user = $users[$i];
-                    echo "
-                        <tr>
-                            <td>{$user['name']}</td>
-                            <td>{$user['age']}</td>
-                        </tr>
-                    ";
-                }
-            }
+    <head>
+        <?php 
+            title(555);
         ?>
-        </tbody>
-    </table>
-    <ul>
+    </head>
+    <body>
         <?php
-            for ($i=1; $i <= ($count/$limit); $i++) { 
-                $class="";
-                if($page == $i)
-                    $class = "class='active'";
-
-                echo "
-                    <li $class><a href='?page=$i'>$i</a></li>
-                ";
-            }
+            echo _header();
+            $numbers = [1,2,3,4,5];
+            echo_array($numbers);
         ?>
-    </ul>
-</body>
+    </body>
 </html>
