@@ -1,34 +1,70 @@
 <?php
-
-    $arr = [8,2,9,4,9,6,7,5,2,8,8,8,8,9,9,2,4];
-
-    $length = count($arr);
-    for ($i=0; $i < $length; $i++){ 
-        $repeat = false;
-        for ($j=$i+1; $j < $length; $j++) { 
-            if($arr[$i] == $arr[$j]){
-                $repeat = true;
-            }
-        }
-        if(!$repeat)
-            echo $arr[$i];
-        echo "<br>";
-    }
-    /*
-    if(isset($_POST['submit']))
-    {
-        if($_POST['username'] == "admin" && $_POST['password'] == "admin"){
-            echo "Access";
-        }
-        else{
-            echo "Access denied";
-        }
-    }*/
+    $users = [
+        ["name"=>"user_1", "age"=>20],
+        ["name"=>"user_2", "age"=>20],
+        ["name"=>"user_3", "age"=>20],
+        ["name"=>"user_4", "age"=>20],
+        ["name"=>"user_5", "age"=>20],
+        ["name"=>"user_6", "age"=>20],
+        ["name"=>"user_7", "age"=>20],
+        ["name"=>"user_8", "age"=>20],
+        ["name"=>"user_9", "age"=>20],
+    ]
 ?>
-<!--
-<form action="" method="POST">
-    <input type="text" name="username" placeholder="Username:" required>
-    <input type="text" name="password" placeholder="Password:" required>
 
-    <button name="submit">Login</button>
-</form> -->
+<html>
+<head>
+    <title>Section 3</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <table>
+        <caption>Statement Summary</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+            $count = count($users);
+            $limit = 3;
+            $page = 1;
+            if(isset($_GET['page']))
+                $page = $_GET['page'];
+
+            $offset = ($page-1) * $limit;
+
+            $reminder = $offset + $limit;
+
+            if($count >= $reminder){
+                for ($i=$offset; $i <= $reminder-1; $i++) { 
+                    $user = $users[$i];
+                    echo "
+                        <tr>
+                            <td>{$user['name']}</td>
+                            <td>{$user['age']}</td>
+                        </tr>
+                    ";
+                }
+            }
+        ?>
+        </tbody>
+    </table>
+    <ul>
+        <?php
+            for ($i=1; $i <= ($count/$limit); $i++) { 
+                $class="";
+                if($page == $i)
+                    $class = "class='active'";
+
+                echo "
+                    <li $class><a href='?page=$i'>$i</a></li>
+                ";
+            }
+        ?>
+    </ul>
+</body>
+</html>
