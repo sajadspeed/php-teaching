@@ -1,51 +1,26 @@
 <?php
+	$host = "localhost";
+	$username = "root";
+	$password = "";
+	$db_name = "php_learning";
 
-    function title($title)
-    {
-        echo "<title>$title | Bestmag.com</title>";
-    }
+	$con = mysqli_connect($host, $username, $password, $db_name);
 
-    function _header(){
-        return "
-            <header>
-                <h1>Hello world</h1>
-            </header>
-        ";
-    }
+	if($con == false){
+		exit("DB Error" . mysqli_connect_error());
+	}
+	
+	$sql = "INSERT INTO `users`(`name`, `username`, `password`, `email_`) VALUES ('Ali', 'ali', '12345678', 'test@test.com')";
+	$result = mysqli_query($con, $sql);
 
-    function echo_array($array){
-        echo "THIS IS YOUR ARRAY: ";
-        echo "<ul>";
-        foreach ($array as $value) {
+	if($result == false){
+		echo "QUERY ERROR " . mysqli_error($con);
+	}
+	
 
-            if(odd($value) == false)
-                echo "<li>_$value</li>";
-            else
-                echo "<li>$value</li>";
-                
-        }
-        echo "</ul>";
-    }
-
-    function odd($number){
-        if($number % 2 == 0)
-            return true;
-        else
-            return false;
-    }
+	/*
+	$sql = "DELETE FROM `users` WHERE `id` = 5";
+	mysqli_query($con, $sql);
+	*/
 
 ?>
-<html>
-    <head>
-        <?php 
-            title(555);
-        ?>
-    </head>
-    <body>
-        <?php
-            echo _header();
-            $numbers = [1,2,3,4,5];
-            echo_array($numbers);
-        ?>
-    </body>
-</html>
