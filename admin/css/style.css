@@ -1,0 +1,10 @@
+@font-face {
+	font-family: 'fa';
+	src: url('../../font/main_font.woff') format('woff');
+}
+
+body{	
+	font-family: fa;
+	direction: rtl;
+	font-size: 16px;
+}
