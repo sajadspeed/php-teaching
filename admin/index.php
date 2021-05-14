@@ -1,13 +1,12 @@
 <?php
-
+	include "../include/db.php";
+	include "../include/function.php";
 ?>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf8">
-		<title>Dashboard - Admin</title>
-		<link rel="stylesheet" href="css/style.css" >
-	</head>
+	<?php
+		head();
+	?>
 
 	<body>
 		

@@ -1,14 +1,12 @@
 <?php
 	include "../include/db.php";
+	include "../include/function.php";
 ?>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf8">
-		<title>Signup - Admin</title>
-		<link rel="stylesheet" href="css/style.css" >
-	</head>
-
+	<?php
+		head();
+	?>
 	<body>
 		<?php
 			if(isset($_POST['submit'])){
@@ -17,14 +15,14 @@
 					$query = "INSERT INTO `user`(`username`, `password`, `email`) VALUES ('{$_POST['username']}','$hashPassword','{$_POST['email']}')";
 
 					if(mysqli_query($con, $query)){
-						echo "خوش آمدید";
+						alert("خوش آمدید", "success");
 					}
 					else{
-						echo "ثبت نام شکست خورد";
+						alert("ثبت نام شکست خورد");
 					}
 
 				}else{
-					echo "پسورد کمتر از 8 کاراکتر";
+					alert("پسورد کمتر از 8 کاراکتر");
 				}
 
 			}
