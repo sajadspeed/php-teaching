@@ -24,4 +24,12 @@
 			</div>
 		';
 	}
+
+	function redirect($url){
+		exit("<script>document.location= '$url'</script>");
+	}
+
+	function isLogin(){
+		return isset($_SESSION['user_id']);
+	}
 ?>

@@ -6,10 +6,21 @@ body{
 	font-family: fa;
 	direction: rtl;
 	font-size: 16px;
+	margin: 0px;
 }
 *{
 	font-family: inherit;
 	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+ul{
+	list-style-type: none;
+	padding: 0px;
 }
 form{
 	width: 50%;
@@ -35,6 +46,7 @@ button{
 	border-radius: 10px;
 	cursor: pointer;
 	margin: 5px;
+
 }
 button:hover{
 	background-color: #27ae60;
@@ -63,4 +75,51 @@ button:hover{
 }
 .alert.fail .message{
 	border-color: #c0392b;
+}
+
+aside{
+	background-color: #ededed;
+	float: right;
+	width: 20%;
+	height: 100vh;
+	padding: 5px 10px;
+}
+aside header{
+	width: 100%;
+    padding-bottom: 0px;
+    text-align: center;
+    font-size: 1.5em;
+}
+aside header span{
+	border-bottom: 1px dashed #CCC;
+}
+aside ul{
+	width: 100%;
+}
+aside ul li{
+	width: 100%;
+	text-align: center;
+	padding: 4px 0px;
+	margin: 2px 0px;
+	border-radius: 5px;
+}
+aside ul li:hover{
+	transition: 0.5s;
+	box-shadow:#ccc 0 0 5px;
+}
+aside ul li a{
+	display: block;
+}
+main{
+	float: right;
+	width: 80%;
+	padding: 5px 10px;
+}
+main h1{
+	text-align: center;
+	width: 100%;
+	float: right;
+	padding: 5px;
+	border-bottom: 1px dashed #CCC;
+	margin-bottom: 10px;
 }

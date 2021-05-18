@@ -13,7 +13,7 @@
 	$sql = "SELECT * FROM `user`";
 	$result = mysqli_query($con, $sql);
 
-	$users = mysqli_fetch_all($result, 1);
+	$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 	var_dump($users);
 
 	$allowColumn = ['id', 'username', 'password'];
