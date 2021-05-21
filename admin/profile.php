@@ -25,18 +25,28 @@
 
 			<form action="" method="POST">
 				<label>نام کاربری</label>
-				<input type="text" value="<?php echo $user['username'] ?>">
+				<input type="text" name="username" value="<?php echo $user['username'] ?>">
 				<label>ایمیل</label>
-				<input type="email" value="<?php echo $user['email'] ?>">
+				<input type="email" name="email" value="<?php echo $user['email'] ?>">
 				<label>پسورد</label>
-				<input type="password" value="********">
+				<input type="password" name="password" value="********">
 
 				<button name="submit">تغییر</button>
 			</form>
-
+ 
 			<?php
 				if(isset($_POST['submit'])){
-					
+					if($user['username']!=$_POST['username']||$user['email']!=$_POST['email']){
+						mysqli_query($con, "UPDATE `user` SET `username` = '{$_POST['username']}', `email` = '{$_POST['email']}' WHERE `id` =".$_SESSION['user_id'] );
+						alert("ویرایش اطلاعات با موفقیت انجام شد. لطفا مجددا وارد شوید." , "success");
+						redirect("logout.php");
+					}
+					if($_POST['password'] != "********"){
+						$hashPassword = hash("sha256", $_POST['password']);
+						mysqli_query($con, "UPDATE `user` SET `password`='$hashPassword' WHERE `id` =".$_SESSION['user_id'] );
+						alert("ویرایش اطلاعات با موفقیت انجام شد. لطفا مجددا وارد شوید." , "success");
+						redirect("logout.php");
+					}
 				}
 			?>
 		</main>

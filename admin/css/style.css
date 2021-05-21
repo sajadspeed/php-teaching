@@ -37,11 +37,10 @@ input{
 	margin: 5px 0px;
 }
 button{
-	width: 50%;
+	width: 48%;
 	border: none;
 	background-color: #2ecc71;
 	color: #FFF;
-	float: right;
 	font-size: 1.2em;
 	border-radius: 10px;
 	cursor: pointer;
@@ -122,4 +121,7 @@ main h1{
 	padding: 5px;
 	border-bottom: 1px dashed #CCC;
 	margin-bottom: 10px;
+}
+form h1{
+	text-align: center;
 }

@@ -32,4 +32,10 @@
 	function isLogin(){
 		return isset($_SESSION['user_id']);
 	}
+
+	function loginSuccess($user_id, $username){
+		$_SESSION['user_id'] = $user_id;
+		$_SESSION['username'] = $username;
+		redirect("index.php");
+	}
 ?>

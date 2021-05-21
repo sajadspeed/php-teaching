@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include "../include/db.php";
 	include "../include/function.php";
 ?>
@@ -15,7 +16,8 @@
 					$query = "INSERT INTO `user`(`username`, `password`, `email`) VALUES ('{$_POST['username']}','$hashPassword','{$_POST['email']}')";
 
 					if(mysqli_query($con, $query)){
-						alert("خوش آمدید", "success");
+						$user_id = mysqli_insert_id($con);
+						loginSuccess($user_id, $_POST['username']);
 					}
 					else{
 						alert("ثبت نام شکست خورد");
@@ -29,10 +31,12 @@
 		?>
 
 		<form action="" method="POST">
+			<h1>ثبت نام در سایت</h1>
 			<input type="text" name="username" placeholder="نام کاربری:" required>
 			<input type="email" name="email" placeholder="ایمیل:" required>
 			<input type="password" name="password" placeholder="پسورد:" required>
-			<button name="submit">ثبت نام</button>
+			<button name="submit">ثبت نام </button>
+			<button name="login" type="button"><a href="login.php" class="button">ورود به سایت</a></button>
 		</form>
 	</body>
 </html>
