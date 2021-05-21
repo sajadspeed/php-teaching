@@ -5,6 +5,7 @@
 	<ul>
 		<li><a href="index.php">داشبورد</a></li>
 		<li><a href="profile.php">پروفایل</a></li>
+		<li><a href="category.php">کتگوری</a></li>
 		
 		<li><a href="logout.php">خروج</a></li>
 	</ul>
