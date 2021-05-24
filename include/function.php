@@ -63,4 +63,37 @@
 	function btnSubmit($formStatus){
 		echo '<button name="submit">'.($formStatus=="add"?"افزودن":"ویرایش").'</button>';
 	}
+
+	function uploadImage($fileArray, $required = true){	
+		$target_dir = "../upload/";
+		$fileName = time() * rand(1, 100) . ".jpg";
+		$target_file = $target_dir . $fileName ;
+
+		$uploadError = null;
+
+		if($required == true && $fileArray['size'] <= 0){
+			$uploadError = "فیلد عکس اجباری است";
+		}
+
+		if($fileArray['type'] != "image/jpeg")
+			$uploadError .= "فرمت مجاز فقط jpg <br>";
+
+		if(($fileArray['size']/1024) >= 1000)
+			$uploadError .= "حداکثر سایز 1 مگابایت <br>";
+		
+
+
+		if($uploadError == null){ 
+			if(move_uploaded_file($fileArray['tmp_name'], $target_file))
+				return $fileName;
+			else
+			{
+				alert();
+				return false;
+			}
+		}else{
+			alert($uploadError);
+			return false;
+		}
+	}
 ?>
