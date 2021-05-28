@@ -1,4 +1,6 @@
 <?php
+	define("absolute", "http://localhost/PHP_Learning/");
+
 	function head($title = null){
 		if($title == null){
 			$pathinfo = pathinfo($_SERVER['REQUEST_URI']);
@@ -64,8 +66,12 @@
 		echo '<button name="submit">'.($formStatus=="add"?"افزودن":"ویرایش").'</button>';
 	}
 
-	function uploadImage($fileArray, $required = true){	
-		$target_dir = "../upload/";
+	function uploadImage($fileArray, $extraDir = null, $required = true){	
+		if($extraDir != null)
+			$extraDir = $extraDir . "/";
+			
+		$target_dir = "../upload/$extraDir";
+		
 		$fileName = time() * rand(1, 100) . ".jpg";
 		$target_file = $target_dir . $fileName ;
 
@@ -95,5 +101,16 @@
 			alert($uploadError);
 			return false;
 		}
+	}
+
+	function url_post_image($imageName){
+		return absolute."upload/post/$imageName";
+	}
+
+	function url_user_image($imageName){
+		if($imageName == 0)
+			return absolute."image/user.jpg";
+		else
+			return absolute."upload/user/$imageName";
 	}
 ?>

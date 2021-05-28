@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2021 at 10:14 PM
+-- Generation Time: May 28, 2021 at 10:14 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `mag`
 --
+CREATE DATABASE IF NOT EXISTS `mag` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `mag`;
 
 -- --------------------------------------------------------
 
@@ -59,13 +61,6 @@ CREATE TABLE `post` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `post`
---
-
-INSERT INTO `post` (`id`, `title`, `memo`, `keyword`, `description`, `image`, `category_id`, `user_id`) VALUES
-(1, 'لورم ایپسوم', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.', 'لورم ایپسوم متن ساختگی با تولید سادگی', 'لورم ایپسوم متن ساختگی با تولید سادگی', '84338122492.jpg', 4, 9);
-
 -- --------------------------------------------------------
 
 --
@@ -76,16 +71,17 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(200) NOT NULL,
   `password` varchar(64) NOT NULL,
-  `email` varchar(300) NOT NULL
+  `email` varchar(300) NOT NULL,
+  `image` varchar(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES
-(9, 'admin', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'admin@admin.com'),
-(10, 'user12315', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'user@user.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `image`) VALUES
+(9, 'admin', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'admin@admin.com', '124911878784.jpg'),
+(10, 'user12315', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'user@user.com', '0');
 
 --
 -- Indexes for dumped tables

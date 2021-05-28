@@ -143,7 +143,12 @@ form h1{
 	text-align: center;
 }
 
-
+.profile-image{
+	width: 100px;
+    height: 100px;
+    margin: 10px calc(50% - 50px);
+    border-radius: 100px;
+}
 
 
 /***** Table ****/
@@ -173,7 +178,11 @@ table {
 	padding: .625em;
 	text-align: center;
   }
-  
+  table tr td img{
+		width: 200px;
+		border-radius: 15px;
+		border: 3px solid #e78181;
+	}
   table th {
 	font-size: .85em;
 	letter-spacing: .1em;
@@ -213,6 +222,7 @@ table {
 	  text-align: right;
 	}
 	
+
 	table td::before {
 	  /*
 	  * aria-label has no advantage, it won't be read inside a table

@@ -2,9 +2,11 @@
 	include "../include/function.php";
 	if(isset($_POST['submit'])){
 
-		var_dump($_POST);
+		
 
 	}
+
+	echo null;
 ?>
 <form action="" method="post">
 <select name="category">

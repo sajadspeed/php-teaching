@@ -18,12 +18,15 @@
 			<h1>پروفایل</h1>
 
 			<?php
-				$select = mysqli_query($con, "SELECT `username`, `email` FROM `user` WHERE `id`=".$_SESSION['user_id']);
+				$select = mysqli_query($con, "SELECT `username`, `email`, `image` FROM `user` WHERE `id`=".$_SESSION['user_id']);
 
 				$user = mysqli_fetch_assoc($select);
 			?>
 
-			<form action="" method="POST">
+			<form action="" method="POST" enctype="multipart/form-data">
+				<img src="<?php echo url_user_image($user['image']) ?>" class="profile-image"><br>
+				<label>تغییر پروفایل</label>
+				<input type="file" name="image">
 				<label>نام کاربری</label>
 				<input type="text" name="username" value="<?php echo $user['username'] ?>">
 				<label>ایمیل</label>
@@ -36,9 +39,19 @@
  
 			<?php
 				if(isset($_POST['submit'])){
+
+					$imageQuery = null;
+					if($_FILES['image']['size'] > 0){
+						$upload = uploadImage($_FILES['image'], "user");
+						if($upload != false){
+							$imageQuery = ", `image`='$upload'";
+						}
+					}
+
+					mysqli_query($con, "UPDATE `user` SET `username` = '{$_POST['username']}', `email` = '{$_POST['email']}' $imageQuery WHERE `id` =".$_SESSION['user_id'] );
+					alert("ویرایش اطلاعات با موفقیت انجام شد." , "success");
+						
 					if($user['username']!=$_POST['username']||$user['email']!=$_POST['email']){
-						mysqli_query($con, "UPDATE `user` SET `username` = '{$_POST['username']}', `email` = '{$_POST['email']}' WHERE `id` =".$_SESSION['user_id'] );
-						alert("ویرایش اطلاعات با موفقیت انجام شد. لطفا مجددا وارد شوید." , "success");
 						redirect("logout.php");
 					}
 					if($_POST['password'] != "********"){

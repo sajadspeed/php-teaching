@@ -13,14 +13,8 @@
 	$field_description = null;
 
 	if(isset($_GET['action']) && isset($_GET['id'])){
-		if($_GET['action'] == "show" && isset($_GET['show'])){
-			if(!mysqli_query($con, "UPDATE `category` SET `show`={$_GET['show']} WHERE `id`=".$_GET['id']))
-				alert();
-			else
-				redirect();
-		}
-		else if($_GET['action'] == "delete"){
-			if(!mysqli_query($con, "DELETE FROM `category` WHERE `id`=".$_GET['id']))
+		if($_GET['action'] == "delete"){
+			if(!mysqli_query($con, "DELETE FROM `post` WHERE `id`=".$_GET['id']))
 				alert();
 			else
 				redirect();
@@ -74,7 +68,7 @@
 						isset($_POST['keyword']) && isset($_POST['description']))
 					{
 						if($_POST['status'] == "add"){
-							$fileName = uploadImage($_FILES['image']);
+							$fileName = uploadImage($_FILES['image'], "post");
 
 							if($fileName != false){
 								$query = "
@@ -100,32 +94,25 @@
 				<thead>
 					<tr>
 						<th>نام</th>
-						<th>نمایش</th>
+						<th>عکس</th>
 						<th>امکانات</th>
 					</tr>
 				</thead>
 				<tbody>
 					
 					<?php
-						$select = mysqli_query($con, "SELECT * FROM `category`");
-						$categories = mysqli_fetch_all($select, MYSQLI_ASSOC);
+						$select = mysqli_query($con, "SELECT `id`, `title`, `image` FROM `post`");
+						$posts = mysqli_fetch_all($select, MYSQLI_ASSOC);
 
-						foreach ($categories as $value) {
-							if(($value['show'])==1)
-								$btnShow = btnTable("?action=show&show=0&id={$value['id']}", "عدم نمایش");
-							else
-								$btnShow = btnTable("?action=show&show=1&id={$value['id']}", "نمایش", "green");
+						
 
-							$status = $value['show']==1?"فعال":"غیرفعال";
-
+						foreach ($posts as $value) {
+							$action = btnTable_action($value['id']);
 							echo "
 								<tr>
-									<td>{$value['name']}</td>
-									<td>$status</td>
-									<td>
-										$btnShow
-										".btnTable_action($value['id'])."
-									</td>
+									<td>{$value['title']}</td>
+									<td><img src=\"".url_post_image($value['image'])."\"></td>
+									<td>$action</td>
 								</tr>
 							";
 						}
