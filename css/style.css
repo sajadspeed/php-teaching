@@ -1,4 +1,52 @@
-body {
-	background-color: blue;
+@font-face {
+	font-family: 'fa';
+	src: url('../font/main_font.woff') format('woff');
 }
- 
+body{	
+	font-family: fa;
+	direction: rtl;
+	font-size: 16px;
+	margin: 0px;
+}
+*{
+	font-family: inherit;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	color: inherit;
+	text-decoration: none;
+}
+ul{
+	list-style-type: none;
+}
+ul li{
+	display: inline-block;
+}
+nav{
+	width: 100%;
+	padding: 20px 5px;
+	background-color: #3498db;
+	color: #FFF;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+nav ul{
+	padding: 0px 10px;
+	display: flex;
+	align-items: center;
+}
+nav ul li{
+	padding: 0px 4px;
+}
+nav ul li a{
+	display: block;
+}
+nav ul li i{
+	font-size: 30px;
+}
+nav .search{
+	height: 100%;
+}

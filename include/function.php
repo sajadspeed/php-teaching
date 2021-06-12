@@ -1,18 +1,32 @@
 <?php
 	define("absolute", "http://localhost/PHP_Learning/");
 
-	function head($title = null){
+	function head($title = null, $baseUrl = "admin"){
 		if($title == null){
 			$pathinfo = pathinfo($_SERVER['REQUEST_URI']);
 			$title = ucfirst($pathinfo['filename']);
 		}
+
 		echo '
 			<head>
-				<meta charset="utf8">
-				<title>'.$title.' - Admin</title>
-				<link rel="stylesheet" href="css/style.css">
-				<script src="../js/jquery.min.js"></script>
-				<script src="js/main.js"></script>
+				<meta charset="utf8">';
+
+			if($baseUrl == "admin"){
+				echo '
+					<title>'.$title.' - Admin</title>
+					<link rel="stylesheet" href="css/style.css">
+					<script src="../js/jquery.min.js"></script>
+					<script src="js/main.js"></script>
+				';
+			} else{
+				echo '
+					<title>'.$title.' - Mag</title>
+					<link rel="stylesheet" href="css/style.css">
+					<link rel="stylesheet" href="css/icofont.min.css">
+				';
+			}
+
+		echo'
 			</head>
 		';
 	}

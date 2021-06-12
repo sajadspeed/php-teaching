@@ -99,6 +99,7 @@ aside{
 	width: 20%;
 	height: 100vh;
 	padding: 5px 10px;
+	position: fixed;
 }
 aside header{
 	width: 100%;
@@ -130,6 +131,8 @@ main{
 	float: right;
 	width: 80%;
 	padding: 5px 10px;
+	margin-right: 20%;
+	padding-bottom: 25px;
 }
 main h1{
 	text-align: center;
