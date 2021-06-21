@@ -24,6 +24,9 @@ ul{
 ul li{
 	display: inline-block;
 }
+img{
+	width: 100%;
+}
 nav{
 	width: 100%;
 	padding: 20px 5px;
@@ -39,7 +42,7 @@ nav ul{
 	align-items: center;
 }
 nav ul li{
-	padding: 0px 4px;
+	padding: 0px 8px;
 }
 nav ul li a{
 	display: block;
@@ -50,3 +53,115 @@ nav ul li i{
 nav .search{
 	height: 100%;
 }
+nav .search form{
+	display: flex;
+	align-items: center;
+}
+nav .search input{
+	border: none;
+    padding: 3px 5px;
+    border-radius: 7px;
+}
+nav .search button{
+	border: none;
+    padding: 2px 7px;
+    border-radius: 5px;
+	float: right;
+	margin: 0px 5px;
+}
+main{
+	width: 75%;
+	padding: 10px 1%;
+	float: right;
+}
+.post{
+	display: flex;
+	margin: 5px 0px;
+}
+.post span a{
+	text-decoration: underline;
+	color: darkblue;
+}
+.post img{
+	width: 35%;
+	border-radius: 10px;
+}
+.post .info{
+	width: 65%;
+    padding: 3px 1%;
+    display: flex;
+    flex-direction: column;
+}
+.read-more{
+	padding: 5px;
+    background-color: #2ecc71;
+    color: #Fff;
+    border-radius: 5px;
+    margin: 5px;
+	align-self: flex-end;
+}
+.pages{
+	width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pages li{
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #dfdfdf;
+	border-radius: 3px;
+	margin: 0px 5px;
+	cursor: pointer;
+}
+.pages li.active{
+	color: #FFF;
+	background-color: #c0392b;
+}
+aside{
+	width: 20%;
+	float: right;
+	padding: 10px;
+}
+aside section{
+	margin-bottom: 10px;
+}
+aside section header, main section header{
+	border-bottom: 3px solid #000;
+	margin-bottom: 10px;
+}
+aside section ul.items{
+	width: 100%;
+	padding: 5px;
+}
+aside section ul.items.users li{
+	display: flex;
+	align-items: center;
+	padding: 5px 0px;
+}
+aside section ul.items.users li img{
+	width: 80px;
+	height: 80px;
+	border-radius: 100px;
+	margin-left: 3px;
+}
+aside section ul.items.users li .count{
+	margin-right: auto;
+	border: 1px dashed #CCC;
+	padding: 3px 5px;
+	border-radius: 50px;
+	background-color: #dfdfdf;
+}
+footer{
+	width: 100%;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #CCC;
+}
+

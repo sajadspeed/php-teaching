@@ -1,7 +1,7 @@
 <?php
 	define("absolute", "http://localhost/PHP_Learning/");
 
-	function head($title = null, $baseUrl = "admin"){
+	function head($title = null, $baseUrl = "admin", $extra = null){
 		if($title == null){
 			$pathinfo = pathinfo($_SERVER['REQUEST_URI']);
 			$title = ucfirst($pathinfo['filename']);
@@ -17,12 +17,14 @@
 					<link rel="stylesheet" href="css/style.css">
 					<script src="../js/jquery.min.js"></script>
 					<script src="js/main.js"></script>
+					'.$extra.'
 				';
 			} else{
 				echo '
 					<title>'.$title.' - Mag</title>
 					<link rel="stylesheet" href="css/style.css">
 					<link rel="stylesheet" href="css/icofont.min.css">
+					'.$extra.'
 				';
 			}
 
@@ -126,5 +128,13 @@
 			return absolute."image/user.jpg";
 		else
 			return absolute."upload/user/$imageName";
+	}
+
+	function url_category($id){
+		return "category-show.php?id=$id";
+	}
+
+	function url_post($id){
+		return "show-post.php?id=$id";
 	}
 ?>

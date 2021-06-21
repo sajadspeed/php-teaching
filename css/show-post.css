@@ -1,0 +1,30 @@
+main > img{
+	width: 80%;
+	margin: 5px 10%;
+	border-radius: 10px;
+}
+main > h1{
+	padding: 10px 5px;
+}
+
+main > p{
+	padding: 10px 5px;
+}
+.suggestion{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+.suggestion .item{
+	width: 25%;
+	padding: 3px 5px;
+}
+.suggestion .item img{
+	border-radius: 10px;
+}
+.suggestion .item h1{
+	font-size: 1.2em;
+	text-align: center;
+}
