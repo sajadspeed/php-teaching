@@ -46,10 +46,11 @@
 
 	$rectangle = new Rectangle(300, 100);
 
-	$rectangle->typeOutline = "solid";
-	$rectangle->backColor = "#FFF";
+	$rectangle->setStyle("#FFF", "red", "solid");
 
 	$rectangle->draw();
+
+	$rectangle = null;
 
 	echo "<br>";
 	echo "<br>";

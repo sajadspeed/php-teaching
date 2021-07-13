@@ -1,12 +1,12 @@
 <?php
 	class Shape{
 
-		public $width  = 0;
-		public $height = 0;
+		protected $width  = 0;
+		protected $height = 0;
 
-		public $backColor = "#dfdfdf";
-		public $borderColor = "#444";
-		public $typeOutline = "dashed";
+		private $backColor = "#dfdfdf";
+		private $borderColor = "#444";
+		private $typeOutline = "dashed";
 
 		public function __construct($width, $height)
 		{
@@ -16,12 +16,28 @@
 
 		public function draw()
 		{
-			echo "Draw a unformed shape...";
+			echo "
+				This is draw method
+			";
 		}
 
-		public function style(){
+		protected function style(){
 			return "width: ".$this->width."px; height: ".$this->height."px; border: 1px ".$this->typeOutline." ".$this->borderColor."; background: ".$this->backColor.";";
 		}
 
+		public function setStyle($backColor, $borderColor, $typeOutline){
+			$this->backColor = $backColor;
+			$this->borderColor = $borderColor;
+			$this->typeOutline = $typeOutline;
+		}
+
+
+		public function __destruct(){
+			echo "<br> This is __destruct method <br>";
+		}
+
+		public function test(){
+			echo "<br> This is test <br>";
+		}
 	}
 ?>
