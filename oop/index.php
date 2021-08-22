@@ -46,7 +46,7 @@
 
 	$rectangle = new Rectangle(300, 100);
 
-	$rectangle->setStyle("#FFF", "red", "solid");
+	$rectangle->setStyle("#FFF", "green", "dashed");
 
 	$rectangle->draw();
 

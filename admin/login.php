@@ -11,6 +11,8 @@
 	?>
 	<body>
 		<?php
+			
+
 			if(isset($_POST['submit'])){
 				$password = hash("sha256", $_POST['password']);
 				$select = mysqli_query($con, "SELECT `id`, `username` FROM `user` WHERE `username`='{$_POST['username']}' AND `password`='$password'");

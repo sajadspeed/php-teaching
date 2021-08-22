@@ -14,13 +14,6 @@
 			$this->height = $height;
 		}
 
-		public function draw()
-		{
-			echo "
-				This is draw method
-			";
-		}
-
 		protected function style(){
 			return "width: ".$this->width."px; height: ".$this->height."px; border: 1px ".$this->typeOutline." ".$this->borderColor."; background: ".$this->backColor.";";
 		}
@@ -36,7 +29,7 @@
 			echo "<br> This is __destruct method <br>";
 		}
 
-		public function test(){
+		public static function test(){
 			echo "<br> This is test <br>";
 		}
 	}
