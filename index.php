@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	include "include/function.php";
-	include "include/db.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,11 +23,11 @@
 				<?php
 					$query = " SELECT `post`.`id`, `title`, `memo`, `image`, `category_id`, `category`.`name` AS 'category_name' 
 							   FROM `post` LEFT JOIN `category` ON `post`.`category_id` = `category`.`id` 
-							   ORDER BY `post`.`id` DESC LIMIT 10";
+							   ORDER BY `post`.`id` DESC LIMIT 10 ";
 
-					$select = mysqli_query($con, $query);
+					$select = $db->execute($query);
 
-					$posts = mysqli_fetch_all($select, MYSQLI_ASSOC);
+					$posts = $select->fetch_all(MYSQLI_ASSOC);
 
 					foreach ($posts as $item) {
 						echo '

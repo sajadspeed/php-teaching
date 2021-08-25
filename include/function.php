@@ -1,5 +1,5 @@
 <?php
-	define("absolute", "http://localhost/PHP_Learning/");
+	include("setting.php");
 
 	function head($title = null, $baseUrl = "admin", $extra = null){
 		if($title == null){

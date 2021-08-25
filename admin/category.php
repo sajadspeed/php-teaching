@@ -1,7 +1,39 @@
 <?php
 	session_start();
-	include "../include/db.php";
 	include "../include/function.php";
+	include "../model/Table.php";
+
+	$table_category = new Table("category");
+
+	$fields = [
+		"name"=>"Programming",
+	];
+
+	$table_category->add($fields);
+
+	///
+
+	echo "<br><hr><br>";
+
+	$table_category->delete(5);
+
+	echo "<br><hr><br>";
+
+	$table_post = new Table("post");
+
+	$fields = [
+		"title"=>"Hello World",
+		"memo"=>"ahvdsjasbdj",
+		"date"=>1651615
+	];
+
+	$table_post->add($fields);
+
+	echo "<br><hr><br>";
+	
+	$table_post->delete(5);
+
+	exit;
 
 	if(!isLogin())
 		redirect("login.php");
@@ -51,7 +83,16 @@
 			<?php
 				if(isset($_POST['submit'])){
 					if($_POST['status'] == "add"){
-						if(!mysqli_query($con, "INSERT INTO `category`(`name`) VALUES ('{$_POST['name']}')"))
+
+						$fields = [
+							"name"=>$_POST['name']
+						];
+
+						$table = new Table($db, "category");
+
+						$table->add($fields);
+
+						if(!$table->add($fields))
 							alert();
 					}
 					else{

@@ -1,12 +1,14 @@
 <?php
-	$host = "localhost";
-	$username = "root";
-	$password = "";
-	$db_name = "mag";
+	class DB {
+		public $con;
 
-	$con = mysqli_connect($host, $username, $password, $db_name);
+		function __construct(){
+			$this->con = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+		}
 
-	if($con == false){
-		exit("DB Error" . mysqli_connect_error());
+		function execute($query){
+			return $this->con->query($query);
+		}
+
 	}
 ?>
