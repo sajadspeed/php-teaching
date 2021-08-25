@@ -5,13 +5,17 @@
 		private $db;
 		private $tableName;
 
-		function __construct($tableName)
+		function __construct()
 		{
 			$this->db = new DB();
-			$this->tableName = $tableName;
+			$this->tableName = strtolower(get_class($this));
 		}
 
 		public function add($fields){
+
+			var_dump(get_object_vars($this));
+
+			exit;
 
 			$columns = "";
 			$values = "";
@@ -26,14 +30,11 @@
 
 			$query = "INSERT INTO `" . $this->tableName . "` ($columns) VALUES($values)";
 
-			echo $query;
-
-			//return $this->db->execute($query);
+			return $this->db->execute($query);
 		}
 
 		public function delete($id){
 			echo "DELETE FROM `" . $this->tableName . "` WHERE `id`=".$id;
-
 		}
 
 	}

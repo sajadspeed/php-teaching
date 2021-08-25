@@ -2,27 +2,27 @@
 	session_start();
 	include "../include/function.php";
 	include "../model/Table.php";
+	include "../model/Post.php";
 
-	$table_category = new Table("category");
+	$post = new Post();
 
 	$fields = [
-		"name"=>"Programming",
+		"title"=>"Hello World",
+		"memo"=>"ahvdsjasbdj",
+		"image"=>"alksdnka",
+		"category_id"=>4,
+		"user_id"=>10,
+		"date"=>time()
 	];
 
-	$table_category->add($fields);
+	$post->add($fields);
 
-	///
-
-	echo "<br><hr><br>";
-
-	$table_category->delete(5);
-
-	echo "<br><hr><br>";
+	exit;
 
 	$table_post = new Table("post");
 
 	$fields = [
-		"title"=>"Hello World",
+		"title"=>$_POST['title'],
 		"memo"=>"ahvdsjasbdj",
 		"date"=>1651615
 	];
