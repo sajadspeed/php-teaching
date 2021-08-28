@@ -50,8 +50,6 @@
 
 	$rectangle->draw();
 
-	$rectangle = null;
-
 	echo "<br>";
 	echo "<br>";
 
